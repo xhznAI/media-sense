@@ -121,7 +121,6 @@ dsh plugin --profile web add github:xhznAI/media-sense#v0.1.0
 
 - [WizisCool/dsh-ears](https://github.com/WizisCool/dsh-ears)：语音输入与文字润色，支持本地 Whisper 和语音识别 API。
 - [haoku123/dsh-voice](https://github.com/haoku123/dsh-voice)：全双工语音交互，结合 SenseVoice 识别与 TTS 朗读，支持语音打断。
-- [wencharmwang/dsh-voice](https://github.com/wencharmwang/dsh-voice)：基于 Whisper ONNX 的本地语音输入插件。
 
 ---
 
