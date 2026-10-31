@@ -23,6 +23,22 @@
 
 Media Sense 把本地音视频交给你选择的模型，返回文字结果。音频和视频可以各选一个模型，FFmpeg 也有独立的检测、安装入口。
 
+## 实机理解效果
+
+### 听音频：带时间戳的转写和摘要
+
+上传一段测试配音，问「这段音频说了啥」，得到逐句转写和内容总结。
+
+![DSH 实机音频理解：测试配音的时间戳转写与内容总结](docs/images/audio-understanding.png)
+
+### 看视频：对白翻译、画面顺序和总结
+
+上传一段 30 秒的东京夜景视频，问「这段视频讲的啥」，得到日语对白的中文解释和按时间排列的画面说明。
+
+![DSH 实机视频理解：东京夜景视频的日语对白、画面顺序与总结](docs/images/video-understanding.png)
+
+*以上为 DSH Desktop 已完成会话的实际截图。音视频由 Media Sense 中配置的模型分析，再由 DSH 整理回答；输入框显示的是主对话模型。*
+
 ## 它在 DSH 里长这样
 
 ![DSH 中的 Media Sense 设置页：FFmpeg、音频模型与视频模型](docs/images/settings-overview.jpg)
@@ -57,14 +73,11 @@ dsh plugin --profile web add github:xhznAI/media-sense#v0.1.0
 
 > 用 Media Sense 分析 `demo.mp4`，按时间线列出主要画面，并标出值得回看的片段。
 
-<details>
-<summary>展开看看：添加模型时要填什么</summary>
+### 添加模型时要填什么
 
 ![真实模型配置界面：模型 ID、接口格式、地址、Key 与输入能力](docs/images/model-setup.jpg)
 
 显示名称可以随意取；**模型 ID 要使用服务商提供的准确名称**。接口格式要与服务商实际实现相符，“兼容 OpenAI”不代表所有音视频扩展都通用。
-
-</details>
 
 ## 模型怎么选
 

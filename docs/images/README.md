@@ -7,8 +7,12 @@
 | `media-sense-hero.png` | 使用 Codex 内置 imagegen 生成的介绍插画，不是应用截图 |
 | `settings-overview.jpg` | DSH 0.2.1-rc.5 的真实 Media Sense 设置页面 |
 | `model-setup.jpg` | 同一运行实例中的真实模型配置页面 |
+| `audio-understanding.png` | DSH Desktop 已完成会话中的音频理解结果，展示测试配音的时间戳转写与摘要 |
+| `video-understanding.png` | 同一会话中的视频理解结果，展示东京夜景视频的对白翻译、画面顺序与总结 |
 
-截图使用独立、空白的演示环境，API Key 留空，没有个人会话、个人路径或真实凭据。截图展示配置界面，不代表已对图中模型执行推理测试。
+设置页和模型配置截图使用独立、空白的演示环境，API Key 留空，不代表已对图中模型执行推理测试。
+
+两张理解结果截图直接取自 DSH Desktop 的实际会话，未改写画面中的提问或模型回答。视频调用记录确认使用 `media_sense_call`，媒体模型为 `gemini-3.8-flash`；输入框中的 DeepSeek 是主对话模型。截图前收起会话侧栏、文件预览和调用详情，避开账号、个人路径与凭据。这里只发布结果截图，不包含原始音视频。
 
 ## 封面生成提示词
 
