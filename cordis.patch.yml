@@ -1,0 +1,4 @@
+# 独立音视频工具；宿主可选注册动态模型来源。
+- insert:
+    - id: media-sense
+      name: '@nex-assistant/media-sense'

@@ -1,0 +1,7 @@
+packages:
+  - .
+autoInstallPeers: false
+strictPeerDependencies: false
+allowBuilds:
+  '@google/genai': true
+  protobufjs: true

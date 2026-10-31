@@ -1,0 +1,136 @@
+{
+  "name": "@nex-assistant/media-sense",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./locale/en.json": "./locale/en.json",
+    "./locale/zh.json": "./locale/zh.json",
+    "./api": {
+      "types": "./lib/types/api/index.d.ts",
+      "default": "./lib/api.js"
+    }
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-locale"
+      ],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "build": "node scripts/clean.mjs && tsc -p tsconfig.build.json && tsdown --config tsdown.config.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "node scripts/generate-reasoning.mjs --check && vitest run",
+    "reasoning:update": "node scripts/generate-reasoning.mjs",
+    "ffmpeg:update": "node scripts/update-ffmpeg.mjs",
+    "release:check": "node scripts/check-release.mjs"
+  },
+  "files": [
+    "lib/**/*.js",
+    "lib/**/*.d.ts",
+    "locale/*.json",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "4.0.5",
+    "@deepseek-ai/schemastery": "3.18.5",
+    "@deepseek-ai/dsh-fs": ">=0.2.1-rc.3 <0.2.2-0",
+    "@deepseek-ai/dsh-working-directory": ">=0.2.1-rc.3 <0.2.2-0",
+    "@deepseek-ai/dsh-tools": ">=0.2.1-rc.3 <0.2.2-0",
+    "@deepseek-ai/dsh-settings": ">=0.2.1-rc.3 <0.2.2-0",
+    "@deepseek-ai/dsh-host-webserver": ">=0.2.1-rc.3 <0.2.2-0",
+    "react": ">=18.2.0 <20.0.0",
+    "react-dom": ">=18.2.0 <20.0.0",
+    "@deepseek-ai/dsh-client-locale": ">=0.2.1-rc.3 <0.2.2-0",
+    "@deepseek-ai/dsh-client-ui-renderer": ">=0.2.1-rc.3 <0.2.2-0",
+    "@deepseek-ai/dsh-client-ui-settings": ">=0.2.1-rc.3 <0.2.2-0",
+    "@deepseek-ai/dsh-client-ui-slots": ">=0.2.1-rc.3 <0.2.2-0",
+    "@deepseek-ai/dsh-client-ui-primitives": ">=0.2.1-rc.3 <0.2.2-0"
+  },
+  "dependencies": {
+    "zod": "^3.25.76"
+  },
+  "description": "Audio and video understanding for DeepSeek Harness, with configurable models and FFmpeg setup.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xhznAI/media-sense.git"
+  },
+  "homepage": "https://github.com/xhznAI/media-sense#readme",
+  "bugs": {
+    "url": "https://github.com/xhznAI/media-sense/issues"
+  },
+  "author": {
+    "name": "zhoufeiyu",
+    "url": "https://github.com/xhznAI"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "media-sense",
+    "audio",
+    "video",
+    "multimodal",
+    "ffmpeg"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@11.25.0",
+  "devDependencies": {
+    "@deepseek-ai/cordis": "4.0.5",
+    "@deepseek-ai/schemastery": "3.18.5",
+    "@deepseek-ai/dsh-fs": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-working-directory": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-settings": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-host-webserver": "0.2.1-rc.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "@deepseek-ai/dsh-client-locale": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-client-ui-renderer": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-client-ui-settings": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-client-ui-slots": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-client-ui-primitives": "0.2.1-rc.5",
+    "@types/react": "18.3.31",
+    "@types/react-dom": "18.3.7",
+    "@types/node": "^24.0.0",
+    "typescript": "6.0.3",
+    "tsdown": "0.22.3",
+    "vitest": "^4.1.11",
+    "@earendil-works/pi-ai": "1.1.0",
+    "@deepseek-ai/dsh-llm": "0.2.1-rc.5"
+  },
+  "typesVersions": {
+    "*": {
+      "api": [
+        "lib/types/api/index.d.ts"
+      ],
+      "client": [
+        "lib/types/client/index.d.ts"
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+# 依赖与临时验证文件；lib 中的 JS 和类型声明随 Git 版本发布
+node_modules/
+.pnpm-store/
+lib/**/*.map
+release/
+coverage/
+.cache/
+*.tsbuildinfo
+*.log
+
+# 本机配置与凭据
+.env
+.env.*
+.npmrc
+.DS_Store
+.idea/
+.vscode/
