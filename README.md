@@ -87,26 +87,17 @@ dsh plugin --profile web add github:xhznAI/media-sense#v0.1.0
 
 ## 几个容易踩的小坑
 
-<details>
-<summary><strong>视频模型能听见视频里的声音吗？</strong></summary>
+### 视频模型能听见视频里的声音吗？
 
 要看具体模型。Kimi Video、GLM Video 在本插件中用于画面理解，不能据此假定支持声音理解。需要分析对白或环境音时，选支持对应输入的模型；必要时先用 FFmpeg 提取音频。
 
-</details>
-
-<details>
-<summary><strong>大文件能直接扔进去吗？</strong></summary>
+### 大文件能直接扔进去吗？
 
 默认每次合计 **25 MB**，可以在模型卡片中调整。服务商的请求体、时长和上下文限制仍然有效；长素材建议先裁剪。插件不会自动压缩或切片。[额度说明](docs/setup.md#文件大小与格式)
 
-</details>
-
-<details>
-<summary><strong>写着 Web，桌面版能用吗？</strong></summary>
+### 写着 Web，桌面版能用吗？
 
 能。DSH 桌面版承载同一套 Web 界面，因此插件元数据使用 `platform: web`，覆盖浏览器与桌面客户端。本插件不提供纯 CLI 界面。
-
-</details>
 
 ---
 
