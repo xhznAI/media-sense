@@ -7,8 +7,8 @@
 | `media-sense-hero.png` | 使用 Codex 内置 imagegen 生成的介绍插画，不是应用截图 |
 | `settings-overview.jpg` | DSH 0.2.1-rc.5 的真实 Media Sense 设置页面 |
 | `model-setup.jpg` | 同一运行实例中的真实模型配置页面 |
-| `audio-understanding.png` | DSH Desktop 已完成会话中的音频理解结果，展示测试配音的时间戳转写与摘要 |
-| `video-understanding.png` | 同一会话中的视频理解结果，展示东京夜景视频的对白翻译、画面顺序与总结 |
+| `audio-understanding.jpg` | DSH Desktop 已完成会话中的音频理解结果，展示测试配音的时间戳转写与摘要 |
+| `video-understanding.jpg` | 同一会话中的视频理解结果，展示东京夜景视频的对白翻译、画面顺序与总结 |
 
 设置页和模型配置截图使用独立、空白的演示环境，API Key 留空，不代表已对图中模型执行推理测试。
 

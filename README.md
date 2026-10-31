@@ -29,13 +29,13 @@ Media Sense 把本地音视频交给你选择的模型，返回文字结果。�
 
 上传一段测试配音，问「这段音频说了啥」，得到逐句转写和内容总结。
 
-![DSH 实机音频理解：测试配音的时间戳转写与内容总结](docs/images/audio-understanding.png)
+![DSH 实机音频理解：测试配音的时间戳转写与内容总结](docs/images/audio-understanding.jpg)
 
 ### 看视频：对白翻译、画面顺序和总结
 
 上传一段 30 秒的东京夜景视频，问「这段视频讲的啥」，得到日语对白的中文解释和按时间排列的画面说明。
 
-![DSH 实机视频理解：东京夜景视频的日语对白、画面顺序与总结](docs/images/video-understanding.png)
+![DSH 实机视频理解：东京夜景视频的日语对白、画面顺序与总结](docs/images/video-understanding.jpg)
 
 *以上为 DSH Desktop 已完成会话的实际截图。音视频由 Media Sense 中配置的模型分析，再由 DSH 整理回答；输入框显示的是主对话模型。*
 
