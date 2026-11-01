@@ -4,6 +4,8 @@
 
 ## 安装
 
+支持 DSH `>=0.2.1-rc.3 <0.2.2-0` 的 Web 和 Desktop。终端操作需要 `dsh` 和 `pnpm` 在 PATH 中，以及 Node.js 24 或更高版本。
+
 使用 [GitHub](https://github.com/xhznAI/media-sense) 来源安装时，需要连接 GitHub 和软件包源。如遇下载问题，可以在安装对话框中切换安装源。
 
 ### 桌面版与 Web 界面
@@ -18,13 +20,13 @@ github:xhznAI/media-sense#v0.1.1
 3. 安装完成后启用 Media Sense。
 4. 打开「设置 → Media Sense」，添加并选择模型。
 
-### 终端安装到 Web profile
+### 终端安装或更新 Web profile
 
 ```sh
 dsh plugin --profile web add github:xhznAI/media-sense#v0.1.1
 ```
 
-安装后重启该 Web profile。自定义 profile 请将 `web` 替换成自己的名称；桌面版优先使用上面的界面入口，避免操作到另一套 DSH 安装。
+安装或更新后重启该 Web profile。自定义 profile 请将 `web` 替换成自己的名称；桌面版使用上面的界面入口。
 
 ### 本地安装包
 
@@ -34,9 +36,17 @@ dsh plugin --profile web add github:xhznAI/media-sense#v0.1.1
 dsh plugin --profile web add file:/path/to/nex-assistant-media-sense-0.1.1.tgz
 ```
 
-### 更新
+### 更新与卸载
 
-安装来源中的 `v0.1.1` 固定到该发布标签。新版本发布后，使用新标签安装；按当前 DSH 版本提供的更新入口操作，或卸载插件后用新来源重新安装。重新安装前自行备份模型配置，更新后检查模型选择。
+安装来源中的 `v0.1.1` 是固定的版本标签。更新时将标签替换为目标版本，再运行安装命令；直接运行 `update` 不会切换固定标签。
+
+在 Web profile 中卸载：
+
+```sh
+dsh plugin --profile web remove @nex-assistant/media-sense
+```
+
+卸载后重启 Web profile。桌面版或 Web 界面也可以在插件管理中卸载。
 
 ## 添加模型
 

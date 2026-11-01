@@ -6,11 +6,55 @@
 </p>
 
 <p align="center">
-  <a href="#三步开用">开始使用</a> ·
+  <a href="https://github.com/xhznAI/media-sense/releases/latest"><img src="https://img.shields.io/github/v/release/xhznAI/media-sense?label=release" alt="最新版本"></a>
+  <a href="https://github.com/xhznAI/media-sense/stargazers"><img src="https://img.shields.io/github/stars/xhznAI/media-sense?logo=github" alt="GitHub stars"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT 许可证"></a>
+  <a href="docs/development.md#本地开发"><img src="https://img.shields.io/badge/DSH-%3E%3D0.2.1--rc.3%20%3C0.2.2--0-blue" alt="DSH 兼容版本：大于等于 0.2.1-rc.3，小于 0.2.2-0"></a>
+</p>
+
+<p align="center">
+  <a href="#安装">安装</a> ·
+  <a href="#开始使用">开始使用</a> ·
   <a href="#模型怎么选">模型推荐</a> ·
   <a href="docs/setup.md">配置手册</a> ·
   <a href="docs/development.md">开发文档</a>
 </p>
+
+## 安装
+
+支持 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) `>=0.2.1-rc.3 <0.2.2-0` 的 Web 和 Desktop。使用终端操作时，需在 PATH 中准备好 `dsh` 和 `pnpm`，并使用 Node.js 24 或更高版本。
+
+桌面版或 Web 界面打开侧栏 **插件 → 添加插件**，填入以下来源，安装后启用 Media Sense：
+
+```text
+github:xhznAI/media-sense#v0.1.1
+```
+
+也可以在终端操作 Web profile：
+
+```sh
+# 安装或更新到 v0.1.1
+dsh plugin --profile web add github:xhznAI/media-sense#v0.1.1
+
+# 卸载
+dsh plugin --profile web remove @nex-assistant/media-sense
+```
+
+更新到其他版本时，将命令中的标签替换为目标版本，再运行安装命令；固定标签不会通过 `update` 自动切换。终端操作后重启对应的 Web profile。其他安装方式见[安装指南](docs/setup.md#安装)。
+
+## 开始使用
+
+打开 **设置 → Media Sense → 添加模型**，填写模型 ID、接口地址和 API Key，选择接口格式与输入能力。然后分别选中音频模型、视频模型，保存。
+
+把素材放进 DSH 工作区，告诉它文件在哪里、你想知道什么。例如：
+
+> 用 Media Sense 分析 `demo.mp4`，按时间线列出主要画面，并标出值得回看的片段。
+
+### 添加模型时要填什么
+
+![真实模型配置界面：模型 ID、接口格式、地址、Key 与输入能力](docs/images/model-setup.jpg)
+
+显示名称可以随意取；**模型 ID 要使用服务商提供的准确名称**。接口格式要与服务商实际实现相符，“兼容 OpenAI”不代表所有音视频扩展都通用。
 
 ## 把素材丢给它，剩下的用一句话说
 
@@ -42,40 +86,6 @@ Media Sense 把本地音视频交给你选择的模型，返回文字结果。�
 ## 它在 DSH 里长这样
 
 ![DSH 中的 Media Sense 设置页：FFmpeg、音频模型与视频模型](docs/images/settings-overview.jpg)
-
-## 三步开用
-
-**① 装进 DSH**
-
-桌面版打开侧栏 **插件 → 添加插件**，填入以下 GitHub 来源，安装后启用 Media Sense：
-
-```text
-github:xhznAI/media-sense#v0.1.1
-```
-
-浏览器版也可以在终端安装，完成后重启 Web 服务：
-
-```sh
-dsh plugin --profile web add github:xhznAI/media-sense#v0.1.1
-```
-
-其他安装和更新方式见[安装指南](docs/setup.md#安装)。
-
-**② 选好耳朵和眼睛**
-
-打开 **设置 → Media Sense → 添加模型**，填写模型 ID、接口地址和 API Key，选择接口格式与输入能力。然后分别选中音频模型、视频模型，保存。
-
-**③ 开始提问**
-
-把素材放进 DSH 工作区，告诉它文件在哪里、你想知道什么。例如：
-
-> 用 Media Sense 分析 `demo.mp4`，按时间线列出主要画面，并标出值得回看的片段。
-
-### 添加模型时要填什么
-
-![真实模型配置界面：模型 ID、接口格式、地址、Key 与输入能力](docs/images/model-setup.jpg)
-
-显示名称可以随意取；**模型 ID 要使用服务商提供的准确名称**。接口格式要与服务商实际实现相符，“兼容 OpenAI”不代表所有音视频扩展都通用。
 
 ## 模型怎么选
 
