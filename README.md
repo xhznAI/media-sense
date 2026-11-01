@@ -27,14 +27,16 @@
 桌面版或 Web 界面打开侧栏 **插件 → 添加插件**，填入以下来源，安装后启用 Media Sense：
 
 ```text
-github:xhznAI/media-sense#v0.1.1
+github:xhznAI/media-sense#v0.1.2
 ```
+
+在插件管理界面更新时，先卸载旧版，再使用上述来源安装新版。
 
 也可以在终端操作 Web profile：
 
 ```sh
-# 安装或更新到 v0.1.1
-dsh plugin --profile web add github:xhznAI/media-sense#v0.1.1
+# 安装或更新到 v0.1.2
+dsh plugin --profile web add github:xhznAI/media-sense#v0.1.2
 
 # 卸载
 dsh plugin --profile web remove @nex-assistant/media-sense

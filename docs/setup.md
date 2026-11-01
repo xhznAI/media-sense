@@ -14,7 +14,7 @@
 2. 在输入框粘贴以下来源，点击安装：
 
 ```text
-github:xhznAI/media-sense#v0.1.1
+github:xhznAI/media-sense#v0.1.2
 ```
 
 3. 安装完成后启用 Media Sense。
@@ -23,7 +23,7 @@ github:xhznAI/media-sense#v0.1.1
 ### 终端安装或更新 Web profile
 
 ```sh
-dsh plugin --profile web add github:xhznAI/media-sense#v0.1.1
+dsh plugin --profile web add github:xhznAI/media-sense#v0.1.2
 ```
 
 安装或更新后重启该 Web profile。自定义 profile 请将 `web` 替换成自己的名称；桌面版使用上面的界面入口。
@@ -33,12 +33,12 @@ dsh plugin --profile web add github:xhznAI/media-sense#v0.1.1
 在源码目录构建并打包，或使用已经构建好的 `.tgz` 文件；构建步骤见[开发文档](development.md)。在 DSH「添加插件」中填入 `file:/安装包的绝对路径.tgz`，也可安装到 Web profile：
 
 ```sh
-dsh plugin --profile web add file:/path/to/nex-assistant-media-sense-0.1.1.tgz
+dsh plugin --profile web add file:/path/to/nex-assistant-media-sense-0.1.2.tgz
 ```
 
 ### 更新与卸载
 
-安装来源中的 `v0.1.1` 是固定的版本标签。更新时将标签替换为目标版本，再运行安装命令；直接运行 `update` 不会切换固定标签。
+安装来源中的 `v0.1.2` 是固定的版本标签。通过插件管理界面更新时，先卸载旧版，再使用新版本来源安装。通过终端更新时，将标签替换为目标版本，再运行安装命令；直接运行 `update` 不会切换固定标签。
 
 在 Web profile 中卸载：
 
