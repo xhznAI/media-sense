@@ -42,7 +42,7 @@ corepack pnpm release:check
 corepack pnpm pack --pack-destination release
 ```
 
-`release:check` 检查编译入口、客户端注册、安装脚本、source map 与 Git 文件范围。首次发布标签为 `v0.1.0`；后续先更新 `package.json` 版本与文档安装命令，再创建对应标签。发布标签不覆盖，后续修正使用新版本。
+`release:check` 检查编译入口、客户端注册、安装脚本、source map 与 Git 文件范围。发布时先更新 `package.json` 版本与文档安装命令，再创建对应标签；不要覆盖已有标签。
 
 推送提交和标签后，用干净的 DSH profile 从 `github:xhznAI/media-sense#版本标签` 安装并验证。GitHub 安装不要求包已发布到 npm。`release/` 保留本地 `.tgz` 交付文件，不提交进 Git；需要时可作为 GitHub Release 附件上传。
 

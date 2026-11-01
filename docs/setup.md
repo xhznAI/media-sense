@@ -12,7 +12,7 @@
 2. 在输入框粘贴以下来源，点击安装：
 
 ```text
-github:xhznAI/media-sense#v0.1.0
+github:xhznAI/media-sense#v0.1.1
 ```
 
 3. 安装完成后启用 Media Sense。
@@ -21,7 +21,7 @@ github:xhznAI/media-sense#v0.1.0
 ### 终端安装到 Web profile
 
 ```sh
-dsh plugin --profile web add github:xhznAI/media-sense#v0.1.0
+dsh plugin --profile web add github:xhznAI/media-sense#v0.1.1
 ```
 
 安装后重启该 Web profile。自定义 profile 请将 `web` 替换成自己的名称；桌面版优先使用上面的界面入口，避免操作到另一套 DSH 安装。
@@ -31,12 +31,12 @@ dsh plugin --profile web add github:xhznAI/media-sense#v0.1.0
 在源码目录构建并打包，或使用已经构建好的 `.tgz` 文件；构建步骤见[开发文档](development.md)。在 DSH「添加插件」中填入 `file:/安装包的绝对路径.tgz`，也可安装到 Web profile：
 
 ```sh
-dsh plugin --profile web add file:/path/to/nex-assistant-media-sense-0.1.0.tgz
+dsh plugin --profile web add file:/path/to/nex-assistant-media-sense-0.1.1.tgz
 ```
 
 ### 更新
 
-安装来源中的 `v0.1.0` 固定到该发布标签。新版本发布后，使用新标签安装；按当前 DSH 版本提供的更新入口操作，或卸载插件后用新来源重新安装。重新安装前自行备份模型配置，更新后检查模型选择。
+安装来源中的 `v0.1.1` 固定到该发布标签。新版本发布后，使用新标签安装；按当前 DSH 版本提供的更新入口操作，或卸载插件后用新来源重新安装。重新安装前自行备份模型配置，更新后检查模型选择。
 
 ## 添加模型
 

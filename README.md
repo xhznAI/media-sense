@@ -50,13 +50,13 @@ Media Sense 把本地音视频交给你选择的模型，返回文字结果。�
 桌面版打开侧栏 **插件 → 添加插件**，填入以下 GitHub 来源，安装后启用 Media Sense：
 
 ```text
-github:xhznAI/media-sense#v0.1.0
+github:xhznAI/media-sense#v0.1.1
 ```
 
 浏览器版也可以在终端安装，完成后重启 Web 服务：
 
 ```sh
-dsh plugin --profile web add github:xhznAI/media-sense#v0.1.0
+dsh plugin --profile web add github:xhznAI/media-sense#v0.1.1
 ```
 
 其他安装和更新方式见[安装指南](docs/setup.md#安装)。
