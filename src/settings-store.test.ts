@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { afterEach, expect, it } from 'vitest';
 import { openSettings } from './settings-store.ts';
 import { preferencesOf, sourceOf, type Config } from './config.ts';
+import { omniMediaLimitMB } from './api/index.js';
 
 const directories: string[] = [];
 afterEach(async () => { await Promise.all(directories.splice(0).map(path => rm(path, { recursive: true, force: true }))); });
@@ -36,6 +37,20 @@ it('配置损坏时保留文件并明确报错，不能静默清空模型或密�
   await writeFile(storagePath, '{invalid');
   await expect(openSettings(config)).rejects.toThrow('媒体配置读取失败');
   expect(await readFile(storagePath, 'utf8')).toBe('{invalid');
+});
+
+it('旧版上限可分别覆盖并在重新打开后保留', async () => {
+  const { config } = await fixture();
+  const runtime = await openSettings(config);
+  await runtime.write!({ preferences: { local: { audioModelId: 'shared', videoModelId: 'shared', modelMaxMediaMB: { shared: 64 } } } });
+  const restored = await openSettings(config);
+  const legacy = preferencesOf(restored, 'local');
+  expect(omniMediaLimitMB(legacy, 'shared', 'audio')).toBe(64);
+  expect(omniMediaLimitMB(legacy, 'shared', 'video')).toBe(64);
+  await restored.write!({ preferences: { local: { ...legacy, audioModelMaxMediaMB: { shared: 32 }, videoModelMaxMediaMB: { shared: 128 } } } });
+  const updated = preferencesOf(await openSettings(config), 'local');
+  expect(omniMediaLimitMB(updated, 'shared', 'audio')).toBe(32);
+  expect(omniMediaLimitMB(updated, 'shared', 'video')).toBe(128);
 });
 
 it('独立安装不要求共享存储或账号适配器', async () => {

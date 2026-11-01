@@ -23,18 +23,24 @@ export const omniMimeTypes = [
   'audio/wav', 'audio/mpeg', 'audio/mp3', 'audio/mp4', 'audio/m4a', 'audio/aac', 'audio/flac', 'audio/ogg', 'audio/webm', 'audio/aiff', 'audio/opus',
   'video/mp4', 'video/webm', 'video/quicktime', 'video/mpeg', 'video/x-msvideo', 'video/x-flv', 'video/3gpp', 'video/x-ms-wmv', 'video/x-matroska',
 ] as const
+const mediaLimitsSchema = z.record(z.string().min(1).max(300), z.number().int().min(1).max(OMNI_MAX_MEDIA_BYTES / 1_000_000))
 export const omniPreferencesSchema = z.object({
   audioModelId: z.string().max(300).default(''),
   videoModelId: z.string().max(300).default(''),
   audioReasoningEffort: omniReasoningPreferenceSchema.optional(),
   videoReasoningEffort: omniReasoningPreferenceSchema.optional(),
-  modelMaxMediaMB: z.record(z.string().min(1).max(300), z.number().int().min(1).max(OMNI_MAX_MEDIA_BYTES / 1_000_000)).optional(),
+  modelMaxMediaMB: mediaLimitsSchema.optional(),
+  audioModelMaxMediaMB: mediaLimitsSchema.optional(),
+  videoModelMaxMediaMB: mediaLimitsSchema.optional(),
 }).strict()
 export type OmniPreferences = z.infer<typeof omniPreferencesSchema>
 
-export function omniMediaLimitMB(preferences: OmniPreferences, modelId: string): number {
-  const limits = preferences.modelMaxMediaMB
-  return limits && Object.hasOwn(limits, modelId) ? limits[modelId]! : OMNI_DEFAULT_MEDIA_MB
+/** 旧版共用上限作为各类型未单独设置时的默认值。 */
+export function omniMediaLimitMB(preferences: OmniPreferences, modelId: string, kind?: OmniKind): number {
+  const limits = kind === 'audio' ? preferences.audioModelMaxMediaMB : kind === 'video' ? preferences.videoModelMaxMediaMB : undefined
+  if (limits && Object.hasOwn(limits, modelId)) return limits[modelId]!
+  const legacy = preferences.modelMaxMediaMB
+  return legacy && Object.hasOwn(legacy, modelId) ? legacy[modelId]! : OMNI_DEFAULT_MEDIA_MB
 }
 
 export interface OmniModelCapabilities {

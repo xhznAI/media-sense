@@ -24,7 +24,7 @@ export const Config: z = z.object({
   settingsId: z.string().default(SETTINGS_ID),
   preferences: z.dict(z.object({ audioModelId: z.string().default(''), videoModelId: z.string().default(''),
     audioReasoningEffort: reasoning, videoReasoningEffort: reasoning,
-    modelMaxMediaMB: z.dict(z.number()),
+    modelMaxMediaMB: z.dict(z.number()), audioModelMaxMediaMB: z.dict(z.number()), videoModelMaxMediaMB: z.dict(z.number()),
   })).default({}).volatile(),
   source: z.union(['', 'local', 'host']).default('').volatile(),
   lastSourceScope: z.string().default('').volatile(),

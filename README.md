@@ -37,13 +37,11 @@ Media Sense 把本地音视频交给你选择的模型，返回文字结果。�
 
 ![DSH 实机视频理解：东京夜景视频的日语对白、画面顺序与总结](docs/images/video-understanding.jpg)
 
-*以上为 DSH Desktop 已完成会话的实际截图。音视频由 Media Sense 中配置的模型分析，再由 DSH 整理回答；输入框显示的是主对话模型。*
+*音视频由 Media Sense 中配置的模型分析，再由 DSH 整理回答；输入框显示的是主对话模型。*
 
 ## 它在 DSH 里长这样
 
 ![DSH 中的 Media Sense 设置页：FFmpeg、音频模型与视频模型](docs/images/settings-overview.jpg)
-
-*实机截图：DSH 0.2.1-rc.5，独立演示配置。模型名称为配置示例，API Key 留空。*
 
 ## 三步开用
 
@@ -55,13 +53,13 @@ Media Sense 把本地音视频交给你选择的模型，返回文字结果。�
 github:xhznAI/media-sense#v0.1.0
 ```
 
-浏览器版也可以在终端安装：
+浏览器版也可以在终端安装，完成后重启 Web 服务：
 
 ```sh
 dsh plugin --profile web add github:xhznAI/media-sense#v0.1.0
 ```
 
-按 DSH 提示重启，然后进入设置。无需 npm 账号，发布版本已包含编译文件。[离线安装与更新说明](docs/setup.md#安装)
+其他安装和更新方式见[安装指南](docs/setup.md#安装)。
 
 **② 选好耳朵和眼睛**
 
@@ -96,7 +94,7 @@ dsh plugin --profile web add github:xhznAI/media-sense#v0.1.0
 
 **GLM 的例外：** 当前插件直接发送本地视频的 Base64；智谱的官方资料对视频 Base64 支持存在差异，部分只列 URL。`glm-4.6v` 暂列候选，接入前需验证所用服务端。[详情与依据](docs/setup.md#glm-视频的兼容性边界)
 
-*推荐依据为厂商文档，核对于 2026-10-31；未逐个进行付费推理实测。可用型号、格式和额度以你的服务商账号为准。接口地址见[配置手册](docs/setup.md#接口地址)。*
+*以上型号参考厂商文档，尚未逐一实测。可用型号、格式和额度以你的服务商账号为准；接口地址见[配置手册](docs/setup.md#接口地址)。*
 
 ## 几个容易踩的小坑
 
@@ -106,11 +104,11 @@ dsh plugin --profile web add github:xhznAI/media-sense#v0.1.0
 
 ### 大文件能直接扔进去吗？
 
-默认每次合计 **25 MB**，可以在模型卡片中调整。服务商的请求体、时长和上下文限制仍然有效；长素材建议先裁剪。插件不会自动压缩或切片。[额度说明](docs/setup.md#文件大小与格式)
+默认每次合计 **25 MB**，可以在模型卡片中分别调整音频和视频的上限。服务商的请求体、时长和上下文限制仍然有效；长素材建议先裁剪。插件不会自动压缩或切片。[额度说明](docs/setup.md#文件大小与格式)
 
 ### 写着 Web，桌面版能用吗？
 
-能。DSH 桌面版承载同一套 Web 界面，因此插件元数据使用 `platform: web`，覆盖浏览器与桌面客户端。本插件不提供纯 CLI 界面。
+能。Media Sense 可以在 DSH 桌面版和浏览器版中使用。
 
 ---
 

@@ -29,6 +29,26 @@ function fixture(models: LocalModel[] = [model]) {
 afterEach(() => { vi.unstubAllGlobals(); });
 
 describe('Media Sense 独立配置', () => {
+  it('同一模型按音视频类型执行独立上限，混合输入按视频上限检查总量', async () => {
+    const { config, ctx, exec, values } = fixture();
+    values.source = 'host';
+    values.preferences['host-a'] = { audioModelId: 'shared', videoModelId: 'shared', modelMaxMediaMB: { shared: 8 },
+      audioModelMaxMediaMB: { shared: 1 }, videoModelMaxMediaMB: { shared: 3 } };
+    const call = vi.fn(async () => ({ modelId: 'shared', text: 'OK', truncated: false }));
+    config.externalSource = { label: { zh: '测试来源', en: 'Test source' }, available: true, scope: 'host-a',
+      listModels: async () => [{ id: 'shared', name: 'Shared', provider: 'google', protocol: 'google-generative-ai', inputModalities: ['audio', 'video'] }], call };
+    vi.mocked(ctx.fs.stat).mockResolvedValue({ type: 'file', size: 1_600_000, version: 'v1' } as never);
+    const tool = omniTool(ctx, config);
+    await expect(tool.execute({ files: ['voice.wav'], instruction: '分析' }, exec)).rejects.toThrow('1 MB');
+    await expect(tool.execute({ files: ['clip.mp4'], instruction: '分析' }, exec)).resolves.toMatchObject({ text: 'OK' });
+    await expect(tool.execute({ files: ['voice.wav', 'clip.mp4'], instruction: '分析' }, exec)).rejects.toThrow('3 MB');
+    values.preferences['host-a']!.audioModelMaxMediaMB = { shared: 2 };
+    values.preferences['host-a']!.videoModelMaxMediaMB = { shared: 1 };
+    await expect(tool.execute({ files: ['voice.wav'], instruction: '分析' }, exec)).resolves.toMatchObject({ text: 'OK' });
+    await expect(tool.execute({ files: ['clip.mp4'], instruction: '分析' }, exec)).rejects.toThrow('1 MB');
+    expect(call).toHaveBeenCalledTimes(2);
+    expect(ctx.fs.readBytes).not.toHaveBeenCalled();
+  });
   it('保存期间切换宿主账号时不能将旧选择写到新账号', async () => {
     const { config, ctx, values } = fixture();
     values.source = 'host';

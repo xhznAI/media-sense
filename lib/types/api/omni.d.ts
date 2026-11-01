@@ -23,21 +23,28 @@ export declare const omniPreferencesSchema: z.ZodObject<{
     audioReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
     videoReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
     modelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+    audioModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+    videoModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
 }, "strict", z.ZodTypeAny, {
     audioModelId: string;
     videoModelId: string;
     audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
     videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
     modelMaxMediaMB?: Record<string, number> | undefined;
+    audioModelMaxMediaMB?: Record<string, number> | undefined;
+    videoModelMaxMediaMB?: Record<string, number> | undefined;
 }, {
     audioModelId?: string | undefined;
     videoModelId?: string | undefined;
     audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
     videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
     modelMaxMediaMB?: Record<string, number> | undefined;
+    audioModelMaxMediaMB?: Record<string, number> | undefined;
+    videoModelMaxMediaMB?: Record<string, number> | undefined;
 }>;
 export type OmniPreferences = z.infer<typeof omniPreferencesSchema>;
-export declare function omniMediaLimitMB(preferences: OmniPreferences, modelId: string): number;
+/** 旧版共用上限作为各类型未单独设置时的默认值。 */
+export declare function omniMediaLimitMB(preferences: OmniPreferences, modelId: string, kind?: OmniKind): number;
 export interface OmniModelCapabilities {
     id?: string | undefined;
     upstreamModelId?: string | undefined;
@@ -369,18 +376,24 @@ export declare const omniSettingsResponseSchema: z.ZodObject<{
         audioReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
         videoReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
         modelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+        audioModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+        videoModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
     }, "strict", z.ZodTypeAny, {
         audioModelId: string;
         videoModelId: string;
         audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         modelMaxMediaMB?: Record<string, number> | undefined;
+        audioModelMaxMediaMB?: Record<string, number> | undefined;
+        videoModelMaxMediaMB?: Record<string, number> | undefined;
     }, {
         audioModelId?: string | undefined;
         videoModelId?: string | undefined;
         audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         modelMaxMediaMB?: Record<string, number> | undefined;
+        audioModelMaxMediaMB?: Record<string, number> | undefined;
+        videoModelMaxMediaMB?: Record<string, number> | undefined;
     }>;
     models: z.ZodArray<z.ZodObject<{
         id: z.ZodString;
@@ -413,6 +426,8 @@ export declare const omniSettingsResponseSchema: z.ZodObject<{
         audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         modelMaxMediaMB?: Record<string, number> | undefined;
+        audioModelMaxMediaMB?: Record<string, number> | undefined;
+        videoModelMaxMediaMB?: Record<string, number> | undefined;
     };
     models: {
         audio: boolean;
@@ -430,6 +445,8 @@ export declare const omniSettingsResponseSchema: z.ZodObject<{
         audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         modelMaxMediaMB?: Record<string, number> | undefined;
+        audioModelMaxMediaMB?: Record<string, number> | undefined;
+        videoModelMaxMediaMB?: Record<string, number> | undefined;
     };
     models: {
         audio: boolean;

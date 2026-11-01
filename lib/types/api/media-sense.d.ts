@@ -114,18 +114,24 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
         audioReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
         videoReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
         modelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+        audioModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+        videoModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
     }, "strict", z.ZodTypeAny, {
         audioModelId: string;
         videoModelId: string;
         audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         modelMaxMediaMB?: Record<string, number> | undefined;
+        audioModelMaxMediaMB?: Record<string, number> | undefined;
+        videoModelMaxMediaMB?: Record<string, number> | undefined;
     }, {
         audioModelId?: string | undefined;
         videoModelId?: string | undefined;
         audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         modelMaxMediaMB?: Record<string, number> | undefined;
+        audioModelMaxMediaMB?: Record<string, number> | undefined;
+        videoModelMaxMediaMB?: Record<string, number> | undefined;
     }>;
     preferencesBySource: z.ZodOptional<z.ZodObject<{
         local: z.ZodObject<{
@@ -134,18 +140,24 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
             audioReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
             videoReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
             modelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+            audioModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+            videoModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
         }, "strict", z.ZodTypeAny, {
             audioModelId: string;
             videoModelId: string;
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         }, {
             audioModelId?: string | undefined;
             videoModelId?: string | undefined;
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         }>;
         host: z.ZodObject<{
             audioModelId: z.ZodDefault<z.ZodString>;
@@ -153,18 +165,24 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
             audioReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
             videoReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
             modelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+            audioModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+            videoModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
         }, "strict", z.ZodTypeAny, {
             audioModelId: string;
             videoModelId: string;
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         }, {
             audioModelId?: string | undefined;
             videoModelId?: string | undefined;
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         }>;
     }, "strip", z.ZodTypeAny, {
         local: {
@@ -173,6 +191,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
         host: {
             audioModelId: string;
@@ -180,6 +200,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
     }, {
         local: {
@@ -188,6 +210,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
         host: {
             audioModelId?: string | undefined;
@@ -195,6 +219,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
     }>>;
     localModels: z.ZodArray<z.ZodEffects<z.ZodObject<{
@@ -251,6 +277,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
         audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         modelMaxMediaMB?: Record<string, number> | undefined;
+        audioModelMaxMediaMB?: Record<string, number> | undefined;
+        videoModelMaxMediaMB?: Record<string, number> | undefined;
     };
     source: "local" | "host";
     localModels: {
@@ -270,6 +298,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
         host: {
             audioModelId: string;
@@ -277,6 +307,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
     } | undefined;
 }, {
@@ -286,6 +318,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
         audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         modelMaxMediaMB?: Record<string, number> | undefined;
+        audioModelMaxMediaMB?: Record<string, number> | undefined;
+        videoModelMaxMediaMB?: Record<string, number> | undefined;
     };
     source: "local" | "host";
     localModels: {
@@ -305,6 +339,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
         host: {
             audioModelId?: string | undefined;
@@ -312,6 +348,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
     } | undefined;
 }>, {
@@ -321,6 +359,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
         audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         modelMaxMediaMB?: Record<string, number> | undefined;
+        audioModelMaxMediaMB?: Record<string, number> | undefined;
+        videoModelMaxMediaMB?: Record<string, number> | undefined;
     };
     source: "local" | "host";
     localModels: {
@@ -340,6 +380,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
         host: {
             audioModelId: string;
@@ -347,6 +389,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
     } | undefined;
 }, {
@@ -356,6 +400,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
         audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         modelMaxMediaMB?: Record<string, number> | undefined;
+        audioModelMaxMediaMB?: Record<string, number> | undefined;
+        videoModelMaxMediaMB?: Record<string, number> | undefined;
     };
     source: "local" | "host";
     localModels: {
@@ -375,6 +421,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
         host: {
             audioModelId?: string | undefined;
@@ -382,6 +430,8 @@ export declare const mediaSenseSettingsWriteSchema: z.ZodEffects<z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
     } | undefined;
 }>;
@@ -393,18 +443,24 @@ export declare const mediaSenseSettingsResponseSchema: z.ZodObject<{
         audioReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
         videoReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
         modelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+        audioModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+        videoModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
     }, "strict", z.ZodTypeAny, {
         audioModelId: string;
         videoModelId: string;
         audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         modelMaxMediaMB?: Record<string, number> | undefined;
+        audioModelMaxMediaMB?: Record<string, number> | undefined;
+        videoModelMaxMediaMB?: Record<string, number> | undefined;
     }, {
         audioModelId?: string | undefined;
         videoModelId?: string | undefined;
         audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         modelMaxMediaMB?: Record<string, number> | undefined;
+        audioModelMaxMediaMB?: Record<string, number> | undefined;
+        videoModelMaxMediaMB?: Record<string, number> | undefined;
     }>;
     models: z.ZodArray<z.ZodObject<{
         id: z.ZodString;
@@ -515,18 +571,24 @@ export declare const mediaSenseSettingsResponseSchema: z.ZodObject<{
             audioReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
             videoReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
             modelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+            audioModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+            videoModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
         }, "strict", z.ZodTypeAny, {
             audioModelId: string;
             videoModelId: string;
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         }, {
             audioModelId?: string | undefined;
             videoModelId?: string | undefined;
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         }>;
         host: z.ZodObject<{
             audioModelId: z.ZodDefault<z.ZodString>;
@@ -534,18 +596,24 @@ export declare const mediaSenseSettingsResponseSchema: z.ZodObject<{
             audioReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
             videoReasoningEffort: z.ZodOptional<z.ZodUnion<[z.ZodLiteral<"default">, z.ZodEnum<["off", "minimal", "low", "medium", "high", "xhigh", "max"]>]>>;
             modelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+            audioModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
+            videoModelMaxMediaMB: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodNumber>>;
         }, "strict", z.ZodTypeAny, {
             audioModelId: string;
             videoModelId: string;
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         }, {
             audioModelId?: string | undefined;
             videoModelId?: string | undefined;
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         }>;
     }, "strip", z.ZodTypeAny, {
         local: {
@@ -554,6 +622,8 @@ export declare const mediaSenseSettingsResponseSchema: z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
         host: {
             audioModelId: string;
@@ -561,6 +631,8 @@ export declare const mediaSenseSettingsResponseSchema: z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
     }, {
         local: {
@@ -569,6 +641,8 @@ export declare const mediaSenseSettingsResponseSchema: z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
         host: {
             audioModelId?: string | undefined;
@@ -576,6 +650,8 @@ export declare const mediaSenseSettingsResponseSchema: z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
     }>;
 }, "strip", z.ZodTypeAny, {
@@ -586,6 +662,8 @@ export declare const mediaSenseSettingsResponseSchema: z.ZodObject<{
         audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         modelMaxMediaMB?: Record<string, number> | undefined;
+        audioModelMaxMediaMB?: Record<string, number> | undefined;
+        videoModelMaxMediaMB?: Record<string, number> | undefined;
     };
     models: {
         audio: boolean;
@@ -603,6 +681,8 @@ export declare const mediaSenseSettingsResponseSchema: z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
         host: {
             audioModelId: string;
@@ -610,6 +690,8 @@ export declare const mediaSenseSettingsResponseSchema: z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
     };
     localModels: {
@@ -646,6 +728,8 @@ export declare const mediaSenseSettingsResponseSchema: z.ZodObject<{
         audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
         modelMaxMediaMB?: Record<string, number> | undefined;
+        audioModelMaxMediaMB?: Record<string, number> | undefined;
+        videoModelMaxMediaMB?: Record<string, number> | undefined;
     };
     models: {
         audio: boolean;
@@ -663,6 +747,8 @@ export declare const mediaSenseSettingsResponseSchema: z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
         host: {
             audioModelId?: string | undefined;
@@ -670,6 +756,8 @@ export declare const mediaSenseSettingsResponseSchema: z.ZodObject<{
             audioReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             videoReasoningEffort?: "high" | "xhigh" | "low" | "medium" | "off" | "minimal" | "max" | "default" | undefined;
             modelMaxMediaMB?: Record<string, number> | undefined;
+            audioModelMaxMediaMB?: Record<string, number> | undefined;
+            videoModelMaxMediaMB?: Record<string, number> | undefined;
         };
     };
     localModels: {

@@ -41,6 +41,11 @@ export function OmniSettings() {
       .finally(() => { if (!abort.signal.aborted) setLoading(false); });
     return () => abort.abort();
   }, [attempt]);
+  useEffect(() => {
+    if (!saved) return;
+    const timer = setTimeout(() => setSaved(false), 3000);
+    return () => clearTimeout(timer);
+  }, [saved]);
   const save = async () => {
     setBusy(true); setError(''); setSaved(false);
     try {
@@ -54,7 +59,9 @@ export function OmniSettings() {
   };
   const disabled = loading || busy || !state;
   const changed = !!state && (source !== state.source || JSON.stringify(preferences) !== JSON.stringify(state.preferencesBySource) || JSON.stringify(localModels) !== JSON.stringify(state.localModels));
-  const limitsValid = Object.values(preferences).every(value => Object.values(value.modelMaxMediaMB ?? {}).every(limit => Number.isInteger(limit) && limit >= 1 && limit <= OMNI_MAX_MEDIA_BYTES / 1_000_000));
+  const limitsValid = Object.values(preferences).every(value =>
+    [value.modelMaxMediaMB, value.audioModelMaxMediaMB, value.videoModelMaxMediaMB].every(limits =>
+      Object.values(limits ?? {}).every(limit => Number.isInteger(limit) && limit >= 1 && limit <= OMNI_MAX_MEDIA_BYTES / 1_000_000)));
   const models = source === 'local' ? localModels.map(mediaSenseModelSummary) : state?.hostModels ?? [];
   const sources: Source[] = state?.hostSource || source === 'host' ? ['local', 'host'] : ['local'];
   const hostLabel = state?.hostSource?.label[localeTag() === 'zh-CN' ? 'zh' : 'en'] ?? tr('外部模型');
@@ -63,7 +70,9 @@ export function OmniSettings() {
     setLocalModels(next); change();
     setPreferences(previous => {
       const local = { ...previous.local };
-      if (local.modelMaxMediaMB) local.modelMaxMediaMB = Object.fromEntries(Object.entries(local.modelMaxMediaMB).filter(([id]) => next.some(model => model.id === id)));
+      for (const field of ['modelMaxMediaMB', 'audioModelMaxMediaMB', 'videoModelMaxMediaMB'] as const) {
+        if (local[field]) local[field] = Object.fromEntries(Object.entries(local[field]).filter(([id]) => next.some(model => model.id === id)));
+      }
       for (const kind of ['audio', 'video'] as const) {
         const field = kind === 'audio' ? 'audioModelId' : 'videoModelId';
         const effort = kind === 'audio' ? 'audioReasoningEffort' : 'videoReasoningEffort';
@@ -88,9 +97,10 @@ export function OmniSettings() {
       <div className="media-sense__models">{(['audio', 'video'] as const).map(kind => {
         const field = kind === 'audio' ? 'audioModelId' : 'videoModelId';
         const effortField = kind === 'audio' ? 'audioReasoningEffort' : 'videoReasoningEffort';
+        const limitField = kind === 'audio' ? 'audioModelMaxMediaMB' : 'videoModelMaxMediaMB';
         const candidates = models.filter(model => model[kind]);
         const selected = preferences[source][field] ? candidates.find(model => model.id === preferences[source][field]) : candidates[0];
-        const limit = omniMediaLimitMB(preferences[source], selected?.id ?? '');
+        const limit = omniMediaLimitMB(preferences[source], selected?.id ?? '', kind);
         const limitValid = Number.isInteger(limit) && limit >= 1 && limit <= OMNI_MAX_MEDIA_BYTES / 1_000_000;
         return <ModelPicker key={kind} kind={kind} value={preferences[source][field]} models={candidates} disabled={disabled} loading={loading}
           onChange={value => { setPreferences(previous => ({ ...previous, [source]: { ...previous[source], [field]: value, [effortField]: 'default' } })); change(); }}>
@@ -101,12 +111,12 @@ export function OmniSettings() {
             disabled={disabled || !selected} value={Number.isFinite(limit) ? limit : ''} onChange={event => {
               if (!selected) return;
               const value = event.target.valueAsNumber;
-              setPreferences(previous => ({ ...previous, [source]: { ...previous[source], modelMaxMediaMB: { ...previous[source].modelMaxMediaMB, [selected.id]: value } } })); change();
+              setPreferences(previous => ({ ...previous, [source]: { ...previous[source], [limitField]: { ...previous[source][limitField], [selected.id]: value } } })); change();
             }}/><span>MB</span></span></label>
           {!limitValid && <p className="media-sense__warning">{tr('请输入 1–2000 的整数。')}</p>}
         </ModelPicker>;
       })}</div>
-      <p className="media-sense__hint">{tr('默认 {size} MB，可按模型修改；同一次调用的所有附件合计。', { size: OMNI_DEFAULT_MEDIA_MB })}<br/>{tr('同时受模型的格式、时长与接口额度限制。')}</p>
+      <p className="media-sense__hint">{tr('默认 {size} MB，音频和视频分别设置；包含视频时，按视频上限计算全部附件。', { size: OMNI_DEFAULT_MEDIA_MB })}<br/>{tr('同时受模型的格式、时长与接口额度限制。')}</p>
     </section>
     {source === 'local' && <LocalModels models={localModels} disabled={disabled} onChange={updateModels}/>}
     <footer className="media-sense__footer">

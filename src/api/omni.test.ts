@@ -109,14 +109,23 @@ describe('Omni 契约', () => {
     expect(omniCallRequestSchema.safeParse({ ...request, files: Array(5).fill(file) }).success).toBe(false);
     expect(omniCallRequestSchema.safeParse({ ...request, files: [{ ...file, data: encoded(OMNI_MAX_INLINE_MEDIA_BYTES + 1) }] }).success).toBe(false);
   });
-  it('每个模型默认 25 MB，配置独立且拒绝无效上限', () => {
-    const prefs = omniPreferencesSchema.parse({ modelMaxMediaMB: { small: 1, large: 2000 } });
-    expect(omniMediaLimitMB(prefs, 'unconfigured')).toBe(25);
-    expect(omniMediaLimitMB(prefs, 'constructor')).toBe(25);
-    expect(omniMediaLimitMB(prefs, 'small')).toBe(1);
-    expect(omniMediaLimitMB(prefs, 'large')).toBe(2000);
-    for (const limit of [0, -1, 1.5, 2001, NaN, Infinity, '64'])
-      expect(omniPreferencesSchema.safeParse({ modelMaxMediaMB: { model: limit } }).success).toBe(false);
+  it('音频和视频按模型独立配置，旧上限在未覆盖时继续生效', () => {
+    const prefs = omniPreferencesSchema.parse({ modelMaxMediaMB: { shared: 64, large: 2000 },
+      audioModelMaxMediaMB: { shared: 1 }, videoModelMaxMediaMB: { shared: 128 } });
+    for (const kind of ['audio', 'video'] as const) {
+      expect(omniMediaLimitMB(prefs, 'unconfigured', kind)).toBe(25);
+      expect(omniMediaLimitMB(prefs, 'constructor', kind)).toBe(25);
+      expect(omniMediaLimitMB(prefs, 'large', kind)).toBe(2000);
+    }
+    expect(omniMediaLimitMB(prefs, 'shared', 'audio')).toBe(1);
+    expect(omniMediaLimitMB(prefs, 'shared', 'video')).toBe(128);
+    expect(omniMediaLimitMB(prefs, 'shared')).toBe(64);
+    const partiallyUpdated = omniPreferencesSchema.parse({ modelMaxMediaMB: { shared: 64 }, audioModelMaxMediaMB: { shared: 8 } });
+    expect(omniMediaLimitMB(partiallyUpdated, 'shared', 'audio')).toBe(8);
+    expect(omniMediaLimitMB(partiallyUpdated, 'shared', 'video')).toBe(64);
+    for (const field of ['modelMaxMediaMB', 'audioModelMaxMediaMB', 'videoModelMaxMediaMB'])
+      for (const limit of [0, -1, 1.5, 2001, NaN, Infinity, '64'])
+        expect(omniPreferencesSchema.safeParse({ [field]: { model: limit } }).success).toBe(false);
   });
   it('MiMo 单文件按 Base64 及前缀限制，而非原文件字节', () => {
     const model = { id: 'mimo-v2.6-pro', protocol: 'openai-completions' };

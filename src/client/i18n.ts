@@ -66,7 +66,7 @@ export const en = {
   "音频模型上传上限": "Audio model upload limit",
   "视频模型上传上限": "Video model upload limit",
   "请输入 1–2000 的整数。": "Enter a whole number from 1 to 2000.",
-  "默认 {size} MB，可按模型修改；同一次调用的所有附件合计。": "Defaults to {size} MB per model, adjustable for the total attachments in one call.",
+  "默认 {size} MB，音频和视频分别设置；包含视频时，按视频上限计算全部附件。": "Defaults to {size} MB. Audio and video are configured separately; calls containing video use the video limit for all attachments.",
   "同时受模型的格式、时长与接口额度限制。": "Model format, duration and API limits also apply.",
   "有未保存的更改": "Unsaved changes",
   "媒体处理": "Media processing",

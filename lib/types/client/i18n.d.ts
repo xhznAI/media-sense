@@ -63,7 +63,7 @@ export declare const en: {
     readonly 音频模型上传上限: "Audio model upload limit";
     readonly 视频模型上传上限: "Video model upload limit";
     readonly "\u8BF7\u8F93\u5165 1\u20132000 \u7684\u6574\u6570\u3002": "Enter a whole number from 1 to 2000.";
-    readonly "\u9ED8\u8BA4 {size} MB\uFF0C\u53EF\u6309\u6A21\u578B\u4FEE\u6539\uFF1B\u540C\u4E00\u6B21\u8C03\u7528\u7684\u6240\u6709\u9644\u4EF6\u5408\u8BA1\u3002": "Defaults to {size} MB per model, adjustable for the total attachments in one call.";
+    readonly "\u9ED8\u8BA4 {size} MB\uFF0C\u97F3\u9891\u548C\u89C6\u9891\u5206\u522B\u8BBE\u7F6E\uFF1B\u5305\u542B\u89C6\u9891\u65F6\uFF0C\u6309\u89C6\u9891\u4E0A\u9650\u8BA1\u7B97\u5168\u90E8\u9644\u4EF6\u3002": "Defaults to {size} MB. Audio and video are configured separately; calls containing video use the video limit for all attachments.";
     readonly "\u540C\u65F6\u53D7\u6A21\u578B\u7684\u683C\u5F0F\u3001\u65F6\u957F\u4E0E\u63A5\u53E3\u989D\u5EA6\u9650\u5236\u3002": "Model format, duration and API limits also apply.";
     readonly 有未保存的更改: "Unsaved changes";
     readonly 媒体处理: "Media processing";

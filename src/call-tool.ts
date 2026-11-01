@@ -39,10 +39,11 @@ export function omniTool(ctx: Context, config: RuntimeConfig): ToolDefinition {
       const preferences = preferencesOf(callConfig);
       const models = await readCatalog(callConfig, signal);
       const model = selectOmniModel(models, preferences, kinds);
-      const effort = preferences[kinds.includes('video') ? 'videoReasoningEffort' : 'audioReasoningEffort'];
+      const kind = kinds.includes('video') ? 'video' : 'audio';
+      const effort = preferences[kind === 'video' ? 'videoReasoningEffort' : 'audioReasoningEffort'];
       omniReasoningParams(model, effort);
       const reasoningEffort = effort === 'default' ? undefined : effort;
-      const local = await inspectMedia(ctx, args.files, { ...exec, signal }, omniMediaLimitMB(preferences, model.id));
+      const local = await inspectMedia(ctx, args.files, { ...exec, signal }, omniMediaLimitMB(preferences, model.id, kind));
       if (model.local) return callLocalModel(ctx, { ...model, local: model.local }, args.instruction, local, signal, effort);
       const source = callConfig.externalSource;
       if (!source?.available) throw new Error('此模型来源暂不可用，请重新连接或选择自配模型。');
