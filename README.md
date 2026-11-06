@@ -9,7 +9,7 @@
   <a href="https://github.com/xhznAI/media-sense/releases/latest"><img src="https://img.shields.io/github/v/release/xhznAI/media-sense?label=release" alt="最新版本"></a>
   <a href="https://github.com/xhznAI/media-sense/stargazers"><img src="https://img.shields.io/github/stars/xhznAI/media-sense?logo=github" alt="GitHub stars"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT 许可证"></a>
-  <a href="docs/development.md#本地开发"><img src="https://img.shields.io/badge/DSH-%3E%3D0.2.1--rc.3%20%3C0.2.2--0-blue" alt="DSH 兼容版本：大于等于 0.2.1-rc.3，小于 0.2.2-0"></a>
+  <a href="docs/development.md#本地开发"><img src="https://img.shields.io/badge/DSH-%3E%3D0.2.1--rc.3-blue" alt="DSH 最低版本：0.2.1-rc.3"></a>
 </p>
 
 <p align="center">
@@ -22,12 +22,12 @@
 
 ## 安装
 
-支持 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) `>=0.2.1-rc.3 <0.2.2-0` 的 Web 和 Desktop。使用终端操作时，需在 PATH 中准备好 `dsh` 和 `pnpm`，并使用 Node.js 24 或更高版本。
+支持 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) `>=0.2.1-rc.3` 的 Web 和 Desktop，不设最高版本限制。使用终端操作时，需在 PATH 中准备好 `dsh` 和 `pnpm`，并使用 Node.js 24 或更高版本。
 
 桌面版或 Web 界面打开侧栏 **插件 → 添加插件**，填入以下来源，安装后启用 Media Sense：
 
 ```text
-github:xhznAI/media-sense#v0.1.2
+github:xhznAI/media-sense#v0.1.3
 ```
 
 在插件管理界面更新时，先卸载旧版，再使用上述来源安装新版。
@@ -35,8 +35,8 @@ github:xhznAI/media-sense#v0.1.2
 也可以在终端操作 Web profile：
 
 ```sh
-# 安装或更新到 v0.1.2
-dsh plugin --profile web add github:xhznAI/media-sense#v0.1.2
+# 安装或更新到 v0.1.3
+dsh plugin --profile web add github:xhznAI/media-sense#v0.1.3
 
 # 卸载
 dsh plugin --profile web remove @nex-assistant/media-sense

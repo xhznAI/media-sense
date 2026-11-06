@@ -4,7 +4,7 @@
 
 ## 安装
 
-支持 DSH `>=0.2.1-rc.3 <0.2.2-0` 的 Web 和 Desktop。终端操作需要 `dsh` 和 `pnpm` 在 PATH 中，以及 Node.js 24 或更高版本。
+支持 DSH `>=0.2.1-rc.3` 的 Web 和 Desktop，不设最高版本限制。终端操作需要 `dsh` 和 `pnpm` 在 PATH 中，以及 Node.js 24 或更高版本。
 
 使用 [GitHub](https://github.com/xhznAI/media-sense) 来源安装时，需要连接 GitHub 和软件包源。如遇下载问题，可以在安装对话框中切换安装源。
 
@@ -14,7 +14,7 @@
 2. 在输入框粘贴以下来源，点击安装：
 
 ```text
-github:xhznAI/media-sense#v0.1.2
+github:xhznAI/media-sense#v0.1.3
 ```
 
 3. 安装完成后启用 Media Sense。
@@ -23,7 +23,7 @@ github:xhznAI/media-sense#v0.1.2
 ### 终端安装或更新 Web profile
 
 ```sh
-dsh plugin --profile web add github:xhznAI/media-sense#v0.1.2
+dsh plugin --profile web add github:xhznAI/media-sense#v0.1.3
 ```
 
 安装或更新后重启该 Web profile。自定义 profile 请将 `web` 替换成自己的名称；桌面版使用上面的界面入口。
@@ -33,12 +33,12 @@ dsh plugin --profile web add github:xhznAI/media-sense#v0.1.2
 在源码目录构建并打包，或使用已经构建好的 `.tgz` 文件；构建步骤见[开发文档](development.md)。在 DSH「添加插件」中填入 `file:/安装包的绝对路径.tgz`，也可安装到 Web profile：
 
 ```sh
-dsh plugin --profile web add file:/path/to/nex-assistant-media-sense-0.1.2.tgz
+dsh plugin --profile web add file:/path/to/nex-assistant-media-sense-0.1.3.tgz
 ```
 
 ### 更新与卸载
 
-安装来源中的 `v0.1.2` 是固定的版本标签。通过插件管理界面更新时，先卸载旧版，再使用新版本来源安装。通过终端更新时，将标签替换为目标版本，再运行安装命令；直接运行 `update` 不会切换固定标签。
+安装来源中的 `v0.1.3` 是固定的版本标签。通过插件管理界面更新时，先卸载旧版，再使用新版本来源安装。通过终端更新时，将标签替换为目标版本，再运行安装命令；直接运行 `update` 不会切换固定标签。
 
 在 Web profile 中卸载：
 
